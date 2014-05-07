@@ -21,12 +21,7 @@ public class MainActivity extends Activity {
 		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 		if (networkInfo != null && networkInfo.isConnected()) {
-			AlertDialog.Builder alert = new AlertDialog.Builder(this);
-			alert.setTitle("Well done");
-			alert.setMessage("Internet connection available.");
-			alert.setCancelable(true);
-			AlertDialog alertDialog = alert.create();
-			alertDialog.show();
+			
 		}
 		else {
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
