@@ -1,70 +1,63 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/MainMenuGridLayout"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/back"
-    android:columnCount="2"
-    android:rowCount="4" >
+    android:layout_gravity="bottom"
+    android:background="@drawable/nightsky"
+    android:rowCount="8"
+    android:columnCount="1" >
 
-    <Button
-        android:id="@+id/MapsButton"
-        android:layout_width="150dip"
-        android:layout_height="150dip"
-        android:layout_column="0"
-        android:layout_gravity="center"
-        android:layout_row="0"
-        android:onClick="showMe"
-        android:text="Maps" />
-
-    <Button
-        android:id="@+id/MapsButton2"
-        android:layout_width="150dip"
-        android:layout_height="150dip"
-        android:layout_column="0"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_row="1"
-        android:onClick="showMe"
-        android:text="Maps" />
-
-    <Button
-        android:id="@+id/EventsButton2"
-        android:layout_width="150dip"
-        android:layout_height="150dip"
-        android:layout_column="1"
-        android:layout_gravity="center"
-        android:layout_row="1"
-        android:onClick="openNewActivity"
-        android:text="Events" />
-
-    <Button
-        android:id="@+id/MapsButton3"
-        android:layout_width="150dip"
-        android:layout_height="150dip"
-        android:layout_column="0"
-        android:layout_gravity="left|top"
-        android:layout_row="3"
-        android:onClick="showMe"
-        android:text="Maps" />
-
-    <Button
-        android:id="@+id/EventsButton3"
-        android:layout_width="150dip"
-        android:layout_height="150dip"
-        android:layout_column="1"
-        android:layout_gravity="left|top"
-        android:layout_row="3"
-        android:onClick="openNewActivity"
-        android:text="Events" />
-
-    <Button
-        android:id="@+id/EventsButton"
-        android:layout_width="150dip"
-        android:layout_height="150dip"
-        android:layout_column="1"
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo2"
         android:layout_gravity="center_horizontal"
-        android:layout_row="0"
-        android:onClick="openNewActivity"
-        android:text="Events" />
+        android:layout_row="1"/>
+    
+    <Button
+        android:id="@+id/foodButton"
+        android:layout_height="50dip"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="2"
+        android:onClick="showRestaurantsList"
+        android:text="@string/foodsBtn" />
+    
+    <Button
+        android:id="@+id/sleepButton"
+        android:layout_height="50dip"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="3"
+        android:onClick="showHotelsList"
+        android:text="@string/sleepsBtn" />
+
+    <Button
+        android:id="@+id/newsButton"
+        android:layout_height="50dip"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="4"
+        android:onClick="showNewsList"
+        android:text="@string/newsBtn" />
+
+    <Button
+        android:id="@+id/eventsButton"
+        android:layout_height="50dip"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="5"
+        android:text="@string/eventsBtn" />
+
+    <Button
+        android:id="@+id/routesButton"
+        android:layout_height="50dip"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="6"
+        android:text="@string/routesBtn" />
+
+    <Button
+        android:id="@+id/photogalleryButtno"
+        android:layout_height="50dip"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="7"
+        android:onClick="showPhotogallery"
+        android:text="@string/photoBtn" />
 
 </GridLayout>

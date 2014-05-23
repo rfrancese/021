@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DYC</string>
+    <string name="app_name">Discover Your City</string>
     <string name="action_settings">Settings</string>
     <string name="secondActivity">This is the second activity</string>
-    <string name="title_activity_second">SecondActivity</string>
-
+    <string name="title_activity_second">Mangiare</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="foodsBtn">Mangiare</string>
+    <string name="sleepsBtn">Dormire</string>
+    <string name="newsBtn">News</string>
+    <string name="eventsBtn">Eventi</string>
+    <string name="routesBtn">Itinerari</string>
+    <string name="photoBtn">Photogallery</string>
+    <string name="title_activity_volley_test">VolleyTest</string>
+    <string name="title_activity_sleep">SleepActivity</string>
+    <string name="title_activity_news">NewsActivity</string>
+    <string name="title_activity_photogallery">Photogallery</string>
+    
 </resources>

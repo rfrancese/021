@@ -1,5 +1,10 @@
 package com.example.dyc;
 
+import com.example.dyc.Food.FoodActivity;
+import com.example.dyc.News.NewsActivity;
+import com.example.dyc.Photogallery.PhotogalleryActivity;
+import com.example.dyc.Sleep.SleepActivity;
+
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -41,14 +46,36 @@ public class MainActivity extends Activity {
 		return true;
 	}
 	
-	public void showMe(View v) {
+	public void showMap(View v) {
 		Uri uri = Uri.parse("geo:38.8891,-77.0492");
 		startActivity(new Intent(Intent.ACTION_VIEW, uri));
 	}
 	
-	public void openNewActivity(View v) {
-		Intent intent = new Intent(this, SecondActivity.class);
+	public void showRestaurantsList(View v) {
+		Intent intent = new Intent(this, FoodActivity.class);
 		startActivity(intent);
 	}
+	
+	public void showHotelsList(View v) {
+		Intent intent = new Intent(this, SleepActivity.class);
+		startActivity(intent);
+	}
+	
+	public void showNewsList(View v) {
+		Intent intent = new Intent(this, NewsActivity.class);
+		startActivity(intent);
+	}
+	
+	public void showPhotogallery(View v) {
+		Intent intent = new Intent(this, PhotogalleryActivity.class);
+		startActivity(intent);
+	}
+	
+	public void volleyTest(View v) {
+		Intent intent = new Intent(this, VolleyTest.class);
+		startActivity(intent);
+	}
+	
+	
 
 }

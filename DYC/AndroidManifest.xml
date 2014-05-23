@@ -3,17 +3,17 @@
     package="com.example.dyc"
     android:versionCode="1"
     android:versionName="1.0" >
-	
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
+
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/dyc_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -26,12 +26,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.dyc.SecondActivity"
+            android:name="com.example.dyc.Food.FoodActivity"
             android:label="@string/title_activity_second" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.dyc.VolleyTest"
+            android:label="@string/title_activity_volley_test" >
+        </activity>
+        <activity
+            android:name="com.example.dyc.Sleep.SleepActivity"
+            android:label="@string/title_activity_sleep" >
+        </activity>
+        <activity
+            android:name="com.example.dyc.News.NewsActivity"
+            android:label="@string/title_activity_news" >
+        </activity>
+        <activity
+            android:name="com.example.dyc.Photogallery.PhotogalleryActivity"
+            android:label="@string/title_activity_photogallery" >
         </activity>
     </application>
 
