@@ -1,4 +1,4 @@
-package com.example.dyc.Sleep;
+package com.example.dyc.Events;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -18,8 +18,8 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import com.example.dyc.R;
-import com.example.dyc.Food.FoodListElement;
-import com.example.dyc.Food.Records;
+import com.example.dyc.News.News;
+import com.example.dyc.News.NewsRecords;
 import com.example.dyc.RowItem.RowItem;
 import com.example.dyc.customAdapter.CustomAdapter;
 
@@ -33,15 +33,14 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class SleepActivity extends Activity {
-	
-	private static final String url = "http://www.wiilo.it/ws_app/listaDormire.php";		
+public class EventsActivity extends Activity {
+
+	private static final String url = "http://www.wiilo.it/ws_app/listaEventi.php";		
 	private DefaultHttpClient client = new DefaultHttpClient();	
 	
 	private ArrayList<String> idsList = new ArrayList<String>();
 	private ArrayList<String> titlesList = new ArrayList<String>();
 	private ArrayList<String> photoList = new ArrayList<String>();
-	private ArrayList<String> descriptionList = new ArrayList<String>();
 	private ListView listView;
 	private List<RowItem> rowItems;
 	private Bitmap thumb = null;
@@ -57,24 +56,23 @@ public class SleepActivity extends Activity {
 				Serializer serializer = new Persister();        
 				
 				Reader reader = new StringReader(xmlData);
-				Records rec = serializer.read(Records.class, reader, false);
+				NewsRecords rec = serializer.read(NewsRecords.class, reader, false);
 //				Log.d(FoodActivity.class.getSimpleName(), rec.toString());
-				for (FoodListElement fle: rec.getRecords()) {
-					titlesList.add(fle.getTitolo());
-					photoList.add(fle.getPhoto());
-					descriptionList.add(fle.getDescription());
+				for (News item : rec.getRecords()) {
+					idsList.add(Integer.toString(item.getNewsID()));
+					titlesList.add(item.getTitolo());
+					photoList.add(item.getPhoto());
 				}
 				
 				String[] idsTemp = idsList.toArray(new String[idsList.size()]);
 				String[] titleTemp = titlesList.toArray(new String[titlesList.size()]);
-				String[] descrTemp = descriptionList.toArray(new String[descriptionList.size()]);
 				String[] photoTemp = photoList.toArray(new String[photoList.size()]);
 				
 				rowItems = new ArrayList<RowItem>();
 				
 				for (int i = 0; i < titleTemp.length; i++) {					
 					thumb = getBitmapFromURL(photoTemp[i]);
-					RowItem item = new RowItem(idsTemp[i] ,thumb, titleTemp[i], Html.fromHtml(descrTemp[i]).toString());
+					RowItem item = new RowItem(idsTemp[i], thumb, Html.fromHtml(titleTemp[i]).toString(), null);
 					rowItems.add(item);
 				}
 				

@@ -1,5 +1,6 @@
 package com.example.dyc;
 
+import com.example.dyc.Events.EventsActivity;
 import com.example.dyc.Food.FoodActivity;
 import com.example.dyc.News.NewsActivity;
 import com.example.dyc.Photogallery.PhotogalleryActivity;
@@ -63,6 +64,11 @@ public class MainActivity extends Activity {
 	
 	public void showNewsList(View v) {
 		Intent intent = new Intent(this, NewsActivity.class);
+		startActivity(intent);
+	}
+	
+	public void showEventsList(View v) {
+		Intent intent = new Intent(this, EventsActivity.class);
 		startActivity(intent);
 	}
 	

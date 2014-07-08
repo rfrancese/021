@@ -2,7 +2,7 @@ package com.example.dyc.Food;
 
 import org.simpleframework.xml.Element;
 
-@Element(name="record")
+@Element(name="record", required=false)
 public class FoodListElement {
 	
 	@Element(name="id", required=false, data=true)
@@ -17,6 +17,27 @@ public class FoodListElement {
 	@Element(name="descrizione", required=false, data=true)
 	public String description;
 	
+	@Element(name="indirizzo", required=false, data=true)
+	public String indirizzo;
+	
+	@Element(name="comune", required=false, data=true)
+	public String comune;
+	
+	@Element(name="provincia", required=false, data=true)
+	public String provincia;
+	
+	@Element(name="regione", required=false, data=true)
+	public String regione;
+	
+	@Element(name="sitoweb", required=false, data=true)
+	public String www;
+	
+	@Element(name="latitudine", required=false, data=true)
+	public String latitudine;
+	
+	@Element(name="longitudine", required=false, data=true)
+	public String longitudine;
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -28,6 +49,12 @@ public class FoodListElement {
 		builder.append(photo);
 		builder.append(", descr=");
 		builder.append(description);
+		builder.append(", www=");
+		builder.append(www);
+		builder.append(", lat=");
+		builder.append(latitudine);
+		builder.append(", lon=");
+		builder.append(longitudine);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -40,20 +67,9 @@ public class FoodListElement {
 		return titolo;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setTitolo(String titolo) {
-		this.titolo = titolo;
-	}
 
 	public String getPhoto() {
 		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 
 	public String getDescription() {
@@ -62,6 +78,34 @@ public class FoodListElement {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public String getComune() {
+		return comune;
+	}
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public String getRegione() {
+		return regione;
+	}
+
+	public String getWww() {
+		return www;
+	}
+
+	public String getLatitudine() {
+		return latitudine;
+	}
+
+	public String getLongitudine() {
+		return longitudine;
 	}
 
 }

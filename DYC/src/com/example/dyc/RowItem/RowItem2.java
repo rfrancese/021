@@ -1,16 +1,14 @@
 package com.example.dyc.RowItem;
 
-import android.graphics.Bitmap;
-
-public class RowItem {
+public class RowItem2 {
 	
 	private String itemID;
-	private Bitmap image;
+	private String image;
 	
 	private String titleString;
 	private String descriptionsString;
 
-	public RowItem(String itemID, Bitmap img, String title, String descr) {
+	public RowItem2(String itemID, String img, String title, String descr) {
 		this.itemID = itemID;
 		this.image = img;
 		this.titleString = title;
@@ -21,7 +19,7 @@ public class RowItem {
 		return itemID;
 	}
 
-	public Bitmap getImage() {
+	public String getImage() {
 		return image;
 	}
 
@@ -33,7 +31,7 @@ public class RowItem {
 		return descriptionsString;
 	}
 
-	public void setImage(Bitmap image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

@@ -23,6 +23,7 @@ public class CustomAdapter extends ArrayAdapter<RowItem> {
 	
 	
 	private class ViewHolder {
+		TextView idtTextView;
 		ImageView imageView;
 		TextView titleTextView;
 		TextView descriptionteTextView;
@@ -38,6 +39,7 @@ public class CustomAdapter extends ArrayAdapter<RowItem> {
 		if (convertView == null) {
 			convertView = layoutInflater.inflate(R.layout.row_layout, null);
 			viewHolder = new ViewHolder();
+			viewHolder.idtTextView = (TextView) convertView.findViewById(R.id.itemID);
 			viewHolder.titleTextView = (TextView) convertView.findViewById(R.id.title);
 			viewHolder.descriptionteTextView = (TextView) convertView.findViewById(R.id.secondLine);
 			viewHolder.imageView = (ImageView) convertView.findViewById(R.id.icon);
@@ -46,6 +48,7 @@ public class CustomAdapter extends ArrayAdapter<RowItem> {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		
+		viewHolder.idtTextView.setText(rowItem.getItemId());
 		viewHolder.titleTextView.setText(rowItem.getTitleString());
 		viewHolder.descriptionteTextView.setText(rowItem.getDescriptionsString());
 		viewHolder.imageView.setImageBitmap(rowItem.getImage());

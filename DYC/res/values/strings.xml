@@ -16,5 +16,9 @@
     <string name="title_activity_sleep">SleepActivity</string>
     <string name="title_activity_news">NewsActivity</string>
     <string name="title_activity_photogallery">Photogallery</string>
-    
+    <string name="title_activity_full_image">FullImageActivity</string>
+    <string name="title_activity_events">EventsActivity</string>
+    <string name="title_activity_food_detail">FoodDetailActivity</string>
+    <string name="title_activity_routes">RoutesActivity</string>
+
 </resources>

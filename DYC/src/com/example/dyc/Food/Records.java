@@ -1,11 +1,10 @@
-package com.example.dyc;
+package com.example.dyc.Food;
 
 import java.util.List;
 
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-import com.example.dyc.Food.FoodListElement;
 
 @Root(name="records")
 public class Records {

@@ -11,12 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+@SuppressWarnings("rawtypes")
 public class GridViewAdapter extends ArrayAdapter {
 
 	private Context context;
 	private int layoutResID;
 	private ArrayList data = new ArrayList();
 	
+	@SuppressWarnings("unchecked")
 	public GridViewAdapter(Context context, int layoutResID, ArrayList data) {
 		super(context,  layoutResID, data);
 		this.context = context;
@@ -44,6 +46,7 @@ public class GridViewAdapter extends ArrayAdapter {
 		ImageItem item = (ImageItem) data.get(position);
 		viewHolder.image.setImageBitmap(item.getImage());
 		viewHolder.imageTitle.setText(item.getTitle());
+		
 		return row;
 	}
 
@@ -51,4 +54,14 @@ public class GridViewAdapter extends ArrayAdapter {
 		ImageView image;
 		TextView imageTitle;
 	}
+
+	public ArrayList getData() {
+		return data;
+	}
+
+	public void setData(ArrayList data) {
+		this.data = data;
+	}
+	
+	
 }

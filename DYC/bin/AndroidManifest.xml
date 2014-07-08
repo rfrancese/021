@@ -6,18 +6,38 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--
+         The following two permissions are not required to use
+    	 Google Maps Android API v2, but are recommended.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="20" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/dyc_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDGJ6o_w6dVbxQG263mp4-sbr8vTBFymHc" />
+
+        <uses-library android:name="com.google.android.maps" />
+
         <activity
-            android:name="com.example.dyc.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.dyc.Food.FoodActivity"
+            android:name=".Food.FoodActivity"
             android:label="@string/title_activity_second" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -35,20 +55,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.dyc.VolleyTest"
+            android:name=".VolleyTest"
             android:label="@string/title_activity_volley_test" >
         </activity>
         <activity
-            android:name="com.example.dyc.Sleep.SleepActivity"
+            android:name=".Sleep.SleepActivity"
             android:label="@string/title_activity_sleep" >
         </activity>
         <activity
-            android:name="com.example.dyc.News.NewsActivity"
+            android:name=".News.NewsActivity"
             android:label="@string/title_activity_news" >
         </activity>
         <activity
-            android:name="com.example.dyc.Photogallery.PhotogalleryActivity"
+            android:name=".Photogallery.PhotogalleryActivity"
             android:label="@string/title_activity_photogallery" >
+        </activity>
+        <activity
+            android:name=".Photogallery.FullImageActivity"
+            android:label="@string/title_activity_full_image" >
+        </activity>
+        <activity
+            android:name=".Events.EventsActivity"
+            android:label="@string/title_activity_events" >
+        </activity>
+        <activity
+            android:name=".Food.FoodDetailActivity"
+            android:label="@string/title_activity_food_detail" >
+        </activity>
+        <activity
+            android:name="com.example.dyc.Routes.RoutesActivity"
+            android:label="@string/title_activity_routes" >
         </activity>
     </application>
 

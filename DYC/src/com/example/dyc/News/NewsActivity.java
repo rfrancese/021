@@ -63,6 +63,7 @@ public class NewsActivity extends Activity {
 					photoList.add(item.getPhoto());
 				}
 				
+				String[] idsTemp = idsList.toArray(new String[idsList.size()]);
 				String[] titleTemp = titlesList.toArray(new String[titlesList.size()]);
 				String[] photoTemp = photoList.toArray(new String[photoList.size()]);
 				
@@ -70,7 +71,7 @@ public class NewsActivity extends Activity {
 				
 				for (int i = 0; i < titleTemp.length; i++) {					
 					thumb = getBitmapFromURL(photoTemp[i]);
-					RowItem item = new RowItem(thumb, Html.fromHtml(titleTemp[i]).toString(), null);
+					RowItem item = new RowItem(idsTemp[i] ,thumb, Html.fromHtml(titleTemp[i]).toString(), null);
 					rowItems.add(item);
 				}
 				

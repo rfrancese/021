@@ -6,7 +6,6 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -19,30 +18,43 @@ import org.simpleframework.xml.core.Persister;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.text.Html;
+
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dyc.R;
-import com.example.dyc.Records;
-import com.example.dyc.RowItem.RowItem;
 import com.example.dyc.customAdapter.CustomAdapter;
+import com.example.dyc.RowItem.RowItem;;
 
 public class FoodActivity extends Activity {
 	
 	private static final String url = "http://www.wiilo.it/ws_app/listaMangiare.php";		
 	private DefaultHttpClient client = new DefaultHttpClient();	
 	
+	private ArrayList<String> idsList = new ArrayList<String>();
 	private ArrayList<String> titlesList = new ArrayList<String>();
 	private ArrayList<String> photoList = new ArrayList<String>();
 	private ArrayList<String> descriptionList = new ArrayList<String>();
 	private ListView listView;
-	private List<RowItem> rowItems;
+	private ArrayList<RowItem> rowItems;
+//	private ArrayList<RowItem2> rowItems;
 	private Bitmap thumb = null;
 		
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+	
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	    	
@@ -55,28 +67,53 @@ public class FoodActivity extends Activity {
 				
 				Reader reader = new StringReader(xmlData);
 				Records rec = serializer.read(Records.class, reader, false);
-//				Log.d(FoodActivity.class.getSimpleName(), rec.toString());
+				Log.d(FoodActivity.class.getSimpleName(), rec.toString());
 				for (FoodListElement fle: rec.getRecords()) {
+					idsList.add(Integer.toString(fle.getId()));
 					titlesList.add(fle.getTitolo());
 					photoList.add(fle.getPhoto());
 					descriptionList.add(fle.getDescription());
 				}
 				
+				String[] idsTemp = idsList.toArray(new String[idsList.size()]);
 				String[] titleTemp = titlesList.toArray(new String[titlesList.size()]);
 				String[] descrTemp = descriptionList.toArray(new String[descriptionList.size()]);
 				String[] photoTemp = photoList.toArray(new String[photoList.size()]);
-				
+//				
 				rowItems = new ArrayList<RowItem>();
-				
-				for (int i = 0; i < titleTemp.length; i++) {					
+////				rowItems = new ArrayList<RowItem2>();
+				for (int i = 0; i < idsTemp.length; i++) {
 					thumb = getBitmapFromURL(photoTemp[i]);
-					RowItem item = new RowItem(thumb, titleTemp[i], Html.fromHtml(descrTemp[i]).toString());
+										
+//					RowItem item = new RowItem(idsTemp[i], thumb, titleTemp[i], Html.fromHtml(descrTemp[i]).toString());
+					RowItem item = new RowItem(idsTemp[i], thumb, titleTemp[i], descrTemp[i]);
+//					RowItem2 item = new RowItem2(idsTemp[i], photoTemp[i], titleTemp[i], Html.fromHtml(descrTemp[i]).toString());
 					rowItems.add(item);
+					
+					//Speeding up the loading
+					if (i == 2) {
+						break;
+					}
 				}
 				
 				listView = (ListView) findViewById(R.id.list);
 				CustomAdapter customAdapter = new CustomAdapter(this, R.layout.row_layout, rowItems);
+//				AlternativeCustomAdapter customAdapter = new AlternativeCustomAdapter(this, rowItems);
 				listView.setAdapter(customAdapter);
+				listView.setOnItemClickListener(new OnItemClickListener() {
+					
+					@Override
+			        public void onItemClick(AdapterView<?> parent, View view,
+			            int position, long id) {
+
+			            // selected item
+			           String selected = ((TextView) view.findViewById(R.id.itemID)).getText().toString();
+			           Log.i("selected", selected);
+			           Intent intent = new Intent(getApplicationContext(), FoodDetailActivity.class);
+			           intent.putExtra("elementID", selected);
+			           startActivity(intent);
+			        }
+			      });
 			
 	        }
 	        catch (Exception e) {
@@ -89,7 +126,7 @@ public class FoodActivity extends Activity {
 	    
 	    
 	    /**
-	     * Get the network response
+	     * Get network response
 	     * @param url
 	     * @return
 	     */
@@ -120,7 +157,7 @@ public class FoodActivity extends Activity {
 			return null;
 		}
 	    
-		public static Bitmap getBitmapFromURL(String src) {
+		public static Bitmap getBitmapFromURL(String src) {			
 	        try {
 	            URL url = new URL(src);
 	            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
